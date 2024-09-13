@@ -1,6 +1,7 @@
 *
 !*.cpp
 !shell.nix
+!CMakeLists.txt
 !.gitignore
 !/src/
 !/.vscode/
