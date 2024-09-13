@@ -2,7 +2,7 @@
 #include <array>
 #include <random>
 
-const int tamanho = 16;
+const int tamanho = 196;
 
 // Função para preencher o array com números aleatórios
 void preencherArray(auto &array)
@@ -95,6 +95,32 @@ void orderByBubble(auto &array)
     }
 }
 
+void buscaBinaria(auto &array, int valor)
+{
+    int inicio = 0;
+    int fim = tamanho - 1;
+    int meio = 0;
+
+    while (inicio <= fim)
+    {
+        meio = (inicio + fim) / 2;
+        if (array[meio] == valor)
+        {
+            std::cout << "Valor encontrado na posição: " << meio << std::endl;
+            return;
+        }
+        else if (array[meio] < valor)
+        {
+            inicio = meio + 1;
+        }
+        else
+        {
+            fim = meio - 1;
+        }
+    }
+    std::cout << "Valor não encontrado" << std::endl;
+}
+
 int main()
 {
     std::array<int, tamanho> array;
@@ -103,10 +129,11 @@ int main()
     exibirArray(array);
     /* orderByInsertion(array);
     orderBySelection(array);
-    buscaLinear(array, 10); */
-
-    orderByBubble(array);
-
+    buscaLinear(array, 10);
     exibirArray(array);
+    */
+    orderByBubble(array);
+    buscaBinaria(array, 10);
+
     return 0;
 }
