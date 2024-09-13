@@ -29,6 +29,36 @@ void exibirArray(const auto &array)
     std::cout << std::endl;
 }
 
+void orderByInsertion(auto &array)
+{
+
+    auto aux = 0;
+    for (int i = 1; i < tamanho; i++)
+    {
+        auto j = i;
+        while (j > 0 && array[j - 1] < array[j])
+        {
+            aux = array[j];
+            array[j] = array[j - 1];
+            array[j - 1] = aux;
+            j = j - 1;
+        };
+    };
+}
+
+void buscaLinear(auto &array, int valor)
+{
+    for (int i = 0; i < tamanho; i++)
+    {
+        if (array[i] == valor)
+        {
+            std::cout << "Valor encontrado na posição: " << i << std::endl;
+            return;
+        }
+    }
+    std::cout << "Valor não encontrado" << std::endl;
+}
+
 int main()
 {
     std::array<int, tamanho> array;
@@ -36,6 +66,9 @@ int main()
     // Preencher e exibir o array
     preencherArray(array);
     exibirArray(array);
+    orderByInsertion(array);
+    exibirArray(array);
+    buscaLinear(array, 10);
 
     return 0;
 }
