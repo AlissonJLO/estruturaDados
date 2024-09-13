@@ -59,16 +59,34 @@ void buscaLinear(auto &array, int valor)
     std::cout << "Valor não encontrado" << std::endl;
 }
 
+void orderBySelection(auto &array)
+{
+    for (int i = 0; i < tamanho - 1; i++)
+    {
+        int indiceMenor = i;
+        for (int j = i + 1; j < tamanho; j++)
+        {
+            if (array[j] < array[indiceMenor])
+            {
+                indiceMenor = j;
+            }
+        }
+        if (indiceMenor != i)
+        {
+            std::swap(array[i], array[indiceMenor]);
+        }
+    }
+}
+
 int main()
 {
     std::array<int, tamanho> array;
 
-    // Preencher e exibir o array
     preencherArray(array);
     exibirArray(array);
-    orderByInsertion(array);
-    exibirArray(array);
-    buscaLinear(array, 10);
+    // orderByInsertion(array);
+    // orderBySelection(array);
+    // buscaLinear(array, 10);
 
     return 0;
 }
