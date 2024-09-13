@@ -2,7 +2,7 @@
 #include <array>
 #include <random>
 
-const int tamanho = 10;
+const int tamanho = 16;
 
 // Função para preencher o array com números aleatórios
 void preencherArray(auto &array)
@@ -78,15 +78,35 @@ void orderBySelection(auto &array)
     }
 }
 
+void orderByBubble(auto &array)
+{
+    bool trocou = true;
+    while (trocou)
+    {
+        trocou = false;
+        for (int i = 0; i < tamanho - 1; i++)
+        {
+            if (array[i] > array[i + 1])
+            {
+                std::swap(array[i], array[i + 1]);
+                trocou = true;
+            }
+        }
+    }
+}
+
 int main()
 {
     std::array<int, tamanho> array;
 
     preencherArray(array);
     exibirArray(array);
-    // orderByInsertion(array);
-    // orderBySelection(array);
-    // buscaLinear(array, 10);
+    /* orderByInsertion(array);
+    orderBySelection(array);
+    buscaLinear(array, 10); */
 
+    orderByBubble(array);
+
+    exibirArray(array);
     return 0;
 }
